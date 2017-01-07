@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="LunchCheck">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+      .input-error{ border-color: red;}
+      .input-ok{ border-color: green;}
+      .message-error{ border-color: red; color: red;}
+      .message-ok{ border-color: green; color: green;}
+    </style>
+  </head>
+<body>
+   <div class="container" ng-controller="LunchCheckController">
+     <h1>Lunch Checker</h1>
+
+         <div class="form-group">
+             <!--Please note that the program is NOT considering and empty item, i.e., , , as an item for the count of elements-->
+             <input id="lunch-menu" type="text" ng-model="inputString" ng-class="{'input-error':textInputHasError(), 'input-ok':textInputIsOk()}"
+             placeholder="list comma separated dishes you usually have for lunch"
+             class="form-control">
+         </div>
+         <div class="form-group">
+             <button class="btn btn-default" ng-click="splitter()">Check If Too Much</button>
+         </div>
+         <div class="form-group message" ng-class="class">
+           {{message}}
+         </div>
+   </div>
+   <script src="angular.min.js"></script>
+   <script src="app.js"></script>
+</body>
+</html>
