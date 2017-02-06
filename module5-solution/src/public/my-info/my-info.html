@@ -1,0 +1,20 @@
+<div class="conatiner">
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<h1>My Info</h1>
+			<span ng-if="!infoCtrl.existInfo">Not Signed Up Yet. <a ui-sref="public.sing-up">Sign up Now!</a></span>
+		</div>
+		<div class="col-xs-12 text-center" ng-if="infoCtrl.existInfo">
+			<span>Name: {{infoCtrl.myInfo.info.firstName}} {{infoCtrl.myInfo.info.lasttName}}</span><br>
+			<span>Phone: {{infoCtrl.myInfo.info.phone}}</span><br>
+			<span>Email: {{infoCtrl.myInfo.info.email}}</span>
+			<h2>Favorite Menu Item</h2>
+			<span>Title: {{infoCtrl.myInfo.item.name}}</span><br>
+			<span>Description: {{infoCtrl.myInfo.item.description}}</span><br>
+	
+			<img class="img-responsive center-block" width="250" height="150" ng-src="{{infoCtrl.base}}/images/{{infoCtrl.myInfo.item.short_name}}.jpg" alt="{{infoCtrl.myInfo.item.name}}">
+
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,60 @@
+<style>
+  .ng-touched.ng-invalid {
+    background-color: #e3927d;
+  }
+  .ng-touched.ng-valid {
+    background-color: lightgreen;
+  }
+</style>
+<div class="container text-center">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+		 <form name="signup" novalidate>
+			<h1>Sign Up</h1>
+			<div class="form-group">
+				<input class="form-control" name="firstName" type="text" placeholder="First Name"
+				ng-model="singInForm.info.firstName"
+				required >
+				<span class="text-error" ng-if="(signup.info.firstName.$error.required && signup.info.firstName.$touched )">First Name is Required</span>
+			</div>
+			<div class="form-group">
+				<input class="form-control" name="lastName" type="text" placeholder="Last Name"
+				ng-model="singInForm.info.lasttName"
+				required>
+				<span class="text-error" ng-if="(signup.info.lastName.$error.required && signup.info.lastName.$touched )">Last Name is Required</span>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="email" name="email" placeholder="Email Address"
+				ng-model="singInForm.info.email"
+				required>
+				<span class="text-error" ng-if="(signup.info.email.$invalid && signup.info.email.$touched )">
+				Email is Required and the forma is: example@example.com</span>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" name="phone" placeholder="Phone Number"
+				ng-model="singInForm.info.phone"
+				required
+				pattern="(\d{3})-(\d{3})-(\d{4})">
+				<span ng-if="signup.info.phone.$invalid && signup.info.phone.$touched">
+            	Phone must be in the format ###-###-####.
+          		</span>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="text" name="favorite" placeholder="Short Name Favorite Dish"
+				ng-model="singInForm.info.favorite"
+				required
+				ng-blur="singInForm.validateFavorite(singInForm.info.favorite)">
+				<span ng-if="singInForm.invalidFavorite">
+            	No such menu number exists
+          		</span>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-default" ng-disabled="signup.$invalid" ng-click="singInForm.submit()">Submit</button>
+			</div>
+			<div class="form-group text-success" ng-if="singInForm.completed">
+				<span>Your Information has been saved</span>
+			</div>
+		 </form>
+		</div>
+	</div>
+</div>
